@@ -1,0 +1,78 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f0f4f8;
+}
+
+.controls-cntr {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.unit-dropdown {
+  margin-right: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+/* Search Bar */
+.search-bar {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Button */
+.search-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.search-btn:active {
+  background-color: #004085; /* Even darker on active */
+}
+
+/* Spinner Container */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height to center spinner */
+}
+
+/* Spinner */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey background */
+  border-top: 8px solid #3498db; /* Blue color for the spinning part */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

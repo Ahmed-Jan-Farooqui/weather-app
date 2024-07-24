@@ -1,0 +1,36 @@
+.weather-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px; 
+    margin: 10px;   
+}
+
+.weather-icon h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.description {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Temperature Range */
+.temp-range {
+    font-size: 1em;
+    font-weight: bold;
+    color: #007bff;
+}
+  
+.weather-icon:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+  

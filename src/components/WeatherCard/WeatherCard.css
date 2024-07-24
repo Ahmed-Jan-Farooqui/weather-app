@@ -1,0 +1,36 @@
+.graph-cntr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-list {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.set-view-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db; /* Blue background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.set-view-btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.set-view-btn:focus {
+  outline: none;
+}
