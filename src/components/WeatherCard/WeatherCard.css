@@ -7,7 +7,7 @@
 
 .forecast-list {
   display: flex;
-  flex-flow: row-reverse nowrap;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: space-around;
   gap: 50px;

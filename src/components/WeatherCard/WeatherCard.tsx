@@ -16,6 +16,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
       max: number;
     }[]
   >([]);
+  const [symbol, setSymbol] = useState("°C");
   const unit_symbols = ["°C", "°F", "K"];
   const days = [
     "Monday",
@@ -46,6 +47,14 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     let avgTemp = 0;
     let currentWeatherIcon;
     let currentWeather;
+
+    if (units === "metric") {
+      setSymbol(unit_symbols[0]);
+    } else if (units === "imperial") {
+      setSymbol(unit_symbols[1]);
+    } else {
+      setSymbol(unit_symbols[2]);
+    }
 
     for (let i = 0; i < 5; i++) {
       forecastedDaysTemp.push(days[(date.getDay() + i) % 7]);
@@ -83,8 +92,8 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
         max: weatherInfo[weatherInfo.length - 1].main.temp_max,
       });
     }
-    setForecastedDays([...forecastedDaysTemp.reverse()]);
-    setDailyAverageTemp([...dailyAverageTemperTemp.reverse()]);
+    setForecastedDays([...forecastedDaysTemp]);
+    setDailyAverageTemp([...dailyAverageTemperTemp]);
     setDailyWeather([...dailyWeather]);
   }, [cityInfo, weatherInfo]);
 
@@ -107,25 +116,16 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     setShowDailyView(true);
   };
 
-  // useEffect(() => {
-  //   // console.log(dailyAverageTemp);
-  //   // console.log(forecastedDays);
-  //   console.log(singleDayTemps);
-  // }, [singleDayTemps]);
+  useEffect(() => {
+    // console.log(dailyAverageTemp);
+    console.log(forecastedDays);
+  }, [forecastedDays]);
 
   return (
     <div className="weather-card-cntr">
       <div className="weather-card">
         <div className="forecast-list">
           {forecastedDays.map((item, idx) => {
-            let symbol;
-            if (units === "metric") {
-              symbol = unit_symbols[0];
-            } else if (units === "imperial") {
-              symbol = unit_symbols[1];
-            } else {
-              symbol = unit_symbols[2];
-            }
             return (
               <WeatherIcon
                 key={idx}
@@ -146,7 +146,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
             xAxis={forecastedDays}
             yAxis={dailyAverageTemp}
             type={"Days"}
-            units="Celsius"
+            units={symbol}
             handleViewChange={handleViewChange}
           />
         </div>
@@ -162,7 +162,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
           <Graph
             xAxis={singleDayTimes}
             yAxis={singleDayTemps}
-            units="Celsius"
+            units={symbol}
             type="Time"
           />
         </div>
