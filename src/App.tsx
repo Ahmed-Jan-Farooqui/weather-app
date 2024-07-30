@@ -18,7 +18,7 @@ function App() {
       let weatherHit;
       if (type === "name") {
         let cityRequest = await axios.get(
-          "http://api.openweathermap.org/geo/1.0/direct",
+          "https://api.openweathermap.org/geo/1.0/direct",
           {
             params: {
               q: city,
