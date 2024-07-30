@@ -18,7 +18,6 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
   >([]);
   const [symbol, setSymbol] = useState("°C");
   const unit_symbols = ["°C", "°F", "K"];
-  const days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const days = [
     "Monday",
     "Tuesday",
@@ -102,7 +101,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     setDailyWeather([...dailyWeather]);
   }, [cityInfo, weatherInfo]);
 
-  const handleViewChange = (event: any, params: any) => {
+  const handleViewChange = (_: any, params: any) => {
     if (showDailyView) {
       setShowDailyView(false);
       return;
