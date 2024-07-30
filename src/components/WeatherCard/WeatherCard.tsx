@@ -18,6 +18,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
   >([]);
   const [symbol, setSymbol] = useState("°C");
   const unit_symbols = ["°C", "°F", "K"];
+  const days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const days = [
     "Monday",
     "Tuesday",
@@ -32,9 +33,10 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
   const img_root = "https://openweathermap.org/img/wn/";
 
   const generateDate = (offset: number) => {
-    let start_date = date.toISOString().split("T")[0];
-    let day_date = parseInt(start_date.split("-")[2]) + offset;
-    let actual_date = start_date.slice(0, start_date.length - 2) + day_date;
+    let new_date = new Date();
+    new_date.setDate(date.getDate() + offset);
+    let actual_date = new_date.toISOString().split("T")[0];
+    console.log(actual_date);
     return actual_date;
   };
 
@@ -68,6 +70,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
         avgTemp += weatherInfo[i].main.temp;
         samplesCount++;
       } else {
+        console.log("Inserting: ");
         dailyAverageTemperTemp.push(avgTemp / samplesCount);
         dailyWeather.push({
           icon: currentWeatherIcon,
@@ -92,6 +95,8 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
         max: weatherInfo[weatherInfo.length - 1].main.temp_max,
       });
     }
+    // console.log("Calculated daily avg temp: ", dailyAverageTemperTemp);
+    // console.log("Calculated forecasted dates: ", forecastedDaysTemp);
     setForecastedDays([...forecastedDaysTemp]);
     setDailyAverageTemp([...dailyAverageTemperTemp]);
     setDailyWeather([...dailyWeather]);
@@ -118,8 +123,8 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
 
   useEffect(() => {
     // console.log(dailyAverageTemp);
-    console.log(forecastedDays);
-  }, [forecastedDays]);
+    console.log("Daily avg temp: ", dailyAverageTemp);
+  }, [dailyAverageTemp]);
 
   return (
     <div className="weather-card-cntr">
