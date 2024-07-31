@@ -15,6 +15,7 @@ export default function Graph({
       series={[
         { data: yAxis, label: `Average Temperature (${units})`, area: true },
       ]}
+      grid={{ vertical: true, horizontal: true }}
       onMarkClick={handleViewChange}
     />
   );

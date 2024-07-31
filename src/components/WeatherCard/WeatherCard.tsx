@@ -3,7 +3,11 @@ import Graph from "../Graph/Graph";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
 import "./WeatherCard.css";
 
-export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
+export default function WeatherCard({
+  cityInfo,
+  weatherInfoC,
+  weatherInfoF,
+}: any) {
   const [showDailyView, setShowDailyView] = useState(false);
   const [dailyAverageTemp, setDailyAverageTemp] = useState<number[]>([]);
   const [singleDayTemps, setSingleDayTemps] = useState<number[]>([]);
@@ -48,14 +52,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     let avgTemp = 0;
     let currentWeatherIcon;
     let currentWeather;
-
-    if (units === "metric") {
-      setSymbol(unit_symbols[0]);
-    } else if (units === "imperial") {
-      setSymbol(unit_symbols[1]);
-    } else {
-      setSymbol(unit_symbols[2]);
-    }
+    let weatherInfo = symbol === unit_symbols[0] ? weatherInfoC : weatherInfoF;
 
     for (let i = 0; i < 5; i++) {
       forecastedDaysTemp.push(days[(date.getDay() + i) % 7]);
@@ -66,6 +63,8 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
       if (weatherInfo[i].dt_txt.slice(0, temp_date.length) === temp_date) {
         currentWeatherIcon = weatherInfo[i].weather[0].icon;
         currentWeather = weatherInfo[i].weather[0].description;
+        currentWeather =
+          currentWeather.slice(0, 1).toUpperCase() + currentWeather.slice(1);
         avgTemp += weatherInfo[i].main.temp;
         samplesCount++;
       } else {
@@ -99,7 +98,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     setForecastedDays([...forecastedDaysTemp]);
     setDailyAverageTemp([...dailyAverageTemperTemp]);
     setDailyWeather([...dailyWeather]);
-  }, [cityInfo, weatherInfo]);
+  }, [cityInfo, symbol]);
 
   const handleViewChange = (_: any, params: any) => {
     if (showDailyView) {
@@ -109,6 +108,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
     let actual_date = generateDate(params.dataIndex);
     let temps = [];
     let dates = [];
+    let weatherInfo = symbol === unit_symbols[0] ? weatherInfoC : weatherInfoF;
     for (let i = 0; i < weatherInfo.length; i++) {
       if (weatherInfo[i].dt_txt.slice(0, actual_date.length) === actual_date) {
         dates.push(weatherInfo[i].dt_txt.split(" ")[1]);
@@ -121,13 +121,46 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
   };
 
   useEffect(() => {
-    // console.log(dailyAverageTemp);
-    console.log("Daily avg temp: ", dailyAverageTemp);
-  }, [dailyAverageTemp]);
+    console.log(dailyWeather);
+    // console.log("Daily avg temp: ", dailyAverageTemp);
+  }, [dailyWeather]);
 
   return (
     <div className="weather-card-cntr">
       <div className="weather-card">
+        <div className="current-day-cntr">
+          <h2 className="current-day">
+            {cityInfo.name + ", " + cityInfo.country}{" "}
+          </h2>
+          <p>{forecastedDays[0]}</p>
+          <p>{dailyWeather[0]?.description}</p>
+        </div>
+        <div className="misc-info-cntr">
+          <div className="current-day-temp">
+            <img src={`${img_root}${dailyWeather[0]?.icon}@2x.png`} />
+            <h2>{Math.floor(dailyAverageTemp[0])}</h2>
+            <p
+              onClick={() => {
+                setSymbol(unit_symbols[0]);
+              }}
+            >
+              °C
+            </p>
+            <p>|</p>
+            <p
+              onClick={() => {
+                setSymbol(unit_symbols[1]);
+              }}
+            >
+              °F
+            </p>
+          </div>
+          <div className="weather-stats-cntr">
+            <p>Pressure: {weatherInfoC[0].main.pressure} KPa</p>
+            <p>Humidity: {weatherInfoC[0].main.humidity}%</p>
+            <p>Wind Speed: {weatherInfoC[0].wind.speed} m/s</p>
+          </div>
+        </div>
         <div className="forecast-list">
           {forecastedDays.map((item, idx) => {
             return (
@@ -168,7 +201,7 @@ export default function WeatherCard({ cityInfo, weatherInfo, units }: any) {
             yAxis={singleDayTemps}
             units={symbol}
             type="Time"
-          />
+          ></Graph>
         </div>
       )}
     </div>

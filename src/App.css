@@ -1,56 +1,24 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  background-color: #f0f4f8;
 }
 
-.controls-cntr {
+.search-bar-cntr {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.unit-dropdown {
-  margin-right: 20px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
-/* Search Bar */
-.search-bar {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-  margin-right: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Search Button */
-.search-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  justify-content: center;
+  width: 60%;
 }
 
 .search-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #e0e0e0;
 }
 
-.search-btn:active {
-  background-color: #004085; /* Even darker on active */
+.search-btn svg {
+  color: black;
 }
 
 /* Spinner Container */

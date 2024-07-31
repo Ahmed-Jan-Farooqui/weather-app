@@ -5,6 +5,17 @@
   align-items: center;
 }
 
+.current-day-temp {
+  display: flex;
+  flex-direction: row;
+}
+
+.misc-info-cntr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .forecast-list {
   display: flex;
   flex-flow: row nowrap;
