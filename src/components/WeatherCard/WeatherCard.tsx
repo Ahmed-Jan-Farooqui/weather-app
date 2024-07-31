@@ -55,7 +55,7 @@ export default function WeatherCard({
     let weatherInfo = symbol === unit_symbols[0] ? weatherInfoC : weatherInfoF;
 
     for (let i = 0; i < 5; i++) {
-      forecastedDaysTemp.push(days[(date.getDay() + i) % 7]);
+      forecastedDaysTemp.push(days[(date.getDay() - 1 + i) % 7]);
     }
 
     for (let i = 0; i < weatherInfo.length; i++) {
