@@ -13,7 +13,12 @@ export default function Graph({
       height={300}
       xAxis={[{ scaleType: "point", data: xAxis, label: type }]}
       series={[
-        { data: yAxis, label: `Average Temperature (${units})`, area: true },
+        {
+          data: yAxis,
+          label: `Average Temperature (${units})`,
+          area: true,
+          color: "#6ea8e5",
+        },
       ]}
       grid={{ vertical: true, horizontal: true }}
       onMarkClick={handleViewChange}
