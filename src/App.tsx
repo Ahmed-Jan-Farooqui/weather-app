@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, MenuItem, Select, TextField } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 
 function App() {
   const [loading, setLoading] = useState(false);
