@@ -140,6 +140,7 @@ export default function WeatherCard({
             <img src={`${img_root}${dailyWeather[0]?.icon}@2x.png`} />
             <h2>{Math.floor(dailyAverageTemp[0])}</h2>
             <p
+              className={symbol === unit_symbols[0] ? "txt-underline" : "txt"}
               onClick={() => {
                 setSymbol(unit_symbols[0]);
               }}
@@ -148,6 +149,7 @@ export default function WeatherCard({
             </p>
             <p>|</p>
             <p
+              className={symbol === unit_symbols[1] ? "txt-underline" : "txt"}
               onClick={() => {
                 setSymbol(unit_symbols[1]);
               }}

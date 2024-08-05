@@ -116,15 +116,14 @@ function App() {
           InputLabelProps={{ shrink: true }}
           sx={{ width: "60%" }}
         ></TextField>
-        <div className="search-btn-cntr">
-          <Button
-            className="search-btn"
-            onClick={getWeather}
-            sx={{ height: 1 }}
-          >
-            <SearchIcon />
-          </Button>
-        </div>
+        <Button
+          variant="outlined"
+          className="search-btn"
+          onClick={getWeather}
+          sx={{ height: "inherit" }}
+        >
+          <SearchIcon />
+        </Button>
       </div>
 
       {loading && (

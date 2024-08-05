@@ -45,3 +45,7 @@
 .set-view-btn:focus {
   outline: none;
 }
+
+.txt-underline {
+  text-decoration: underline;
+}

@@ -9,8 +9,8 @@ export default function Graph({
 }: any) {
   return (
     <LineChart
-      width={500}
-      height={300}
+      height={500}
+      width={800}
       xAxis={[{ scaleType: "point", data: xAxis, label: type }]}
       series={[
         {
