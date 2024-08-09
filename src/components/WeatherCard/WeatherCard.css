@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+p {
+  margin: 0;
+}
+
+.current-day-cntr {
+  color: gray;
+}
+
+.current-day {
+  font-size: x-large;
+}
+
+.txt, .txt-underline:hover {
+  cursor: pointer;
+}
+
 .current-day-temp {
   display: flex;
   flex-direction: row;

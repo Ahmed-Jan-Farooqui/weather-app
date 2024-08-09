@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  color: gray;
 }
 
 .search-bar-cntr {
@@ -11,6 +12,7 @@
   align-items: stretch;
   justify-content: center;
   width: 70%;
+  padding-bottom: 1.5em;
 }
 
 .search-btn:hover {

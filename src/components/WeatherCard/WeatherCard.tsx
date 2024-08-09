@@ -129,9 +129,9 @@ export default function WeatherCard({
     <div className="weather-card-cntr">
       <div className="weather-card">
         <div className="current-day-cntr">
-          <h2 className="current-day">
+          <p className="current-day">
             {cityInfo.name + ", " + cityInfo.country}{" "}
-          </h2>
+          </p>
           <p>{forecastedDays[0]}</p>
           <p>{dailyWeather[0]?.description}</p>
         </div>
